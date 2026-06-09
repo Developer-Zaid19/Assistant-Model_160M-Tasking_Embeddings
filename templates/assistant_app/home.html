@@ -1,0 +1,163 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local AI Studio</title>
+  <link rel="stylesheet" href="{% static 'assistant_app/styles.css' %}?v=tasking-1">
+  <link rel="stylesheet" href="{% static 'css/output.css' %}?v=tasking-1">
+</head>
+<body>
+
+  <main class="page-main">
+
+    <!-- NAV -->
+    <nav class="top-nav mb-16" aria-label="Primary navigation">
+      <a class="brand" href="{% url 'home' %}">
+        <span class="brand-dot"></span>
+        local-ai-studio
+      </a>
+      <div class="nav-links">
+        <a class="active" href="{% url 'home' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'contact' %}">contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-grid grid items-start gap-10 mb-14 anim-fadeup"
+             style="grid-template-columns: 1fr auto;">
+
+      <div>
+        <p class="eyebrow">local · private · offline</p>
+        <h1>
+          <span class="grad-purple">Local AI</span><br>
+          <span class="grad-orange">Studio</span>
+        </h1>
+        <p class="subtitle mt-5 max-w-[560px]">
+          Chat with your 160M language model or generate semantic embeddings —
+          fully on your machine, zero cloud dependency.
+        </p>
+      </div>
+
+      <div class="status-bar" aria-label="Model status">
+        <span>{{ chat_model }}</span>
+        <span>{{ embedding_model }}</span>
+        <span>{{ dimension }}-dim vectors</span>
+      </div>
+
+    </section>
+
+    <!-- WORKSPACE -->
+    <section class="workspace anim-fadeup anim-delay-2">
+
+      <!-- Tab switcher -->
+      <div class="mode-switch flex justify-between items-center gap-8 " role="tablist">
+        <button class="mode-button active" data-mode="chat" type="button" role="tab" aria-selected="true">
+          ⚡ Chat
+        </button>
+        <button class="mode-button" data-mode="embedding" type="button" role="tab" aria-selected="false">
+          🔮 Embedding
+        </button>
+        <button class="mode-button" data-mode="task" type="button" role="tab" aria-selected="false">
+          Tasking
+        </button>
+      </div>
+
+      <!-- CHAT PANEL -->
+      <section class="panel active" id="chat-panel" role="tabpanel">
+
+        <div class="conversation" id="conversation">
+          <div class="bubble assistant">
+            <span class="label">model</span>
+            <p>Ready. Send a message and I'll generate a local response.</p>
+          </div>
+        </div>
+
+        <form class="composer" id="chat-form">
+          {% csrf_token %}
+          <textarea
+            id="chat-input"
+            rows="1"
+            placeholder="Type your message…"
+          ></textarea>
+          <button type="submit" style="align-self:flex-end;">Send →</button>
+        </form>
+
+      </section>
+
+      <!-- EMBEDDING PANEL -->
+      <section class="panel" id="embedding-panel" role="tabpanel">
+
+        <div class="embedding-layout">
+
+          <form class="embedding-form" id="embedding-form">
+            {% csrf_token %}
+            <label for="embedding-input" class="embed-label">Text to embed</label>
+            <textarea
+              id="embedding-input"
+              rows="8"
+              placeholder="Paste or type any text to generate a semantic vector..."
+            ></textarea>
+            <button type="submit" class="w-full mt-4" style="min-height:48px;">
+              Generate Embedding ⚡
+            </button>
+          </form>
+
+          <div class="result-box" id="embedding-result">
+            <span class="label label-green">embedding preview</span>
+            <p class="muted mt-2">
+              The full array won't display here. A preview will appear below;
+              copy the complete vector with the button.
+            </p>
+            <div class="vector-preview" id="vector-preview"></div>
+            <button class="copy-button w-full" id="copy-vector" type="button" disabled>
+              Copy Full Vector
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TASK PANEL -->
+      <section class="panel" id="task-panel" role="tabpanel">
+
+        <div class="tasking-layout">
+
+          <form class="tasking-form" id="tasking-form">
+            {% csrf_token %}
+            <label for="tasking-input" class="task-label">Any Task</label>
+            <textarea
+              id="tasking-input"
+              rows="8"
+              placeholder="Write a task like open YouTube, launch VS Code, or search Wikipedia..."
+            ></textarea>
+            <button type="submit" class="w-full mt-4" style="min-height:48px;">
+              Run Task
+            </button>
+          </form>
+
+          <div class="result-box" id="tasking-result">
+            <span class="label label-green">task result</span>
+            <p class="muted mt-2">
+              The assistant will embed your text, select the closest saved task,
+              then execute the matched workflow.
+            </p>
+            <div class="vector-preview" id="tasking-preview"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <script src="{% static 'assistant_app/app.js' %}?v=tasking-1"></script>
+
+</body>
+</html>

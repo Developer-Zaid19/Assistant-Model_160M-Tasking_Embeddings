@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Local AI Studio</title>
+  <link rel="stylesheet" href="{% static 'assistant_app/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+<body>
+
+  <main class="page-main">
+
+    <!-- NAV -->
+    <nav class="top-nav mb-16" aria-label="Primary navigation">
+      <a class="brand" href="{% url 'home' %}">
+        <span class="brand-dot"></span>
+        local-ai-studio
+      </a>
+      <div class="nav-links">
+        <a href="{% url 'home' %}">home</a>
+        <a class="active" href="{% url 'about' %}">about</a>
+        <a href="{% url 'contact' %}">contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero mb-14 anim-fadeup">
+      <p class="eyebrow">about this project</p>
+      <h1>
+        <span class="grad-purple">Private local AI</span><br>
+        <span class="grad-orange">for chat &amp; embeddings.</span>
+      </h1>
+      <p class="subtitle max-w-[560px] mt-5">
+        This Django app runs your local language model and SentenceTransformer
+        embedding model directly on your own machine — no API keys, no data
+        leaving your system.
+      </p>
+    </section>
+
+    <!-- CARDS -->
+    <section class="info-grid anim-fadeup anim-delay-2">
+
+      <article class="info-panel">
+        <span class="label label-purple">Chat Model</span>
+        <h2>{{ chat_model }}</h2>
+        <p class="panel-text">
+          Send prompts to your local 160M language model and view generated
+          responses instantly — all inference happens on-device with no
+          external calls.
+        </p>
+      </article>
+
+      <article class="info-panel">
+        <span class="label label-cyan">Embedding Model</span>
+        <h2>{{ embedding_model }}</h2>
+        <p class="panel-text">
+          Generate {{ dimension }}-dimensional semantic vectors for any text.
+          The preview shows a slice; the full vector is available via the
+          copy button on the home page.
+        </p>
+      </article>
+
+      <article class="info-panel">
+        <span class="label label-green">Local First</span>
+        <h2>Runs on your system</h2>
+        <p class="panel-text">
+          Built with Django, PyTorch, Transformers, and SentenceTransformers
+          inside a Python 3.10 virtual environment. Zero cloud dependency.
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "project_embedding-model",
+  "version": "1.0.0",
+  "description": "A local Django website for chatting with your local 160M model and generating semantic text embeddings with `all-MiniLM-L6-v2`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Developer-Zaid19/Project_Embedding-Model.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Developer-Zaid19/Project_Embedding-Model/issues"
+  },
+  "homepage": "https://github.com/Developer-Zaid19/Project_Embedding-Model#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

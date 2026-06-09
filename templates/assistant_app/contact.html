@@ -1,0 +1,89 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Local AI Studio</title>
+  <link rel="stylesheet" href="{% static 'assistant_app/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+<body>
+
+  <main class="page-main">
+
+    <!-- NAV -->
+    <nav class="top-nav mb-16" aria-label="Primary navigation">
+      <a class="brand" href="{% url 'home' %}">
+        <span class="brand-dot"></span>
+        local-ai-studio
+      </a>
+      <div class="nav-links">
+        <a href="{% url 'home' %}">home</a>
+        <a href="{% url 'about' %}">about</a>
+        <a class="active" href="{% url 'contact' %}">contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero mb-14 anim-fadeup">
+      <p class="eyebrow">get in touch</p>
+      <h1>
+        <span class="grad-purple">Connect this app</span><br>
+        <span class="grad-orange">somewhere new.</span>
+      </h1>
+      <p class="subtitle max-w-[560px] mt-5">
+        Use this page as your contact area. Wire it up to email, a database,
+        or an admin dashboard whenever you're ready.
+      </p>
+    </section>
+
+    <!-- FORM + NOTE -->
+    <section class="contact-layout anim-fadeup anim-delay-2">
+
+      <!-- Form card -->
+      <div class="contact-form">
+
+        <div class="field-group">
+          <label for="name" class="contact-label">Name</label>
+          <input id="name" type="text" placeholder="Your name">
+        </div>
+
+        <div class="field-group">
+          <label for="email" class="contact-label">Email</label>
+          <input id="email" type="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field-group">
+          <label for="message" class="contact-label">Message</label>
+          <textarea id="message" rows="6" placeholder="Write your message…"></textarea>
+        </div>
+
+        <button type="button" class="contact-submit-btn w-full mt-1" style="min-height:50px;">
+          Send Message →
+        </button>
+
+      </div>
+
+      <!-- Side info card -->
+      <aside class="contact-note">
+
+        <span class="label label-cyan">local dev info</span>
+
+        <h2 class="note-heading">Project path</h2>
+        <p class="note-box">Github.com</p>
+
+        <h2 class="note-heading">Run command</h2>
+        <p class="note-box">python manage.py runserver</p>
+
+        <h2 class="note-heading">Environment</h2>
+        <p class="note-box">Python 3.10 · Django · PyTorch</p>
+
+      </aside>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
