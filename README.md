@@ -19,15 +19,80 @@ Local AI Studio enables users to interact with an offline AI assistant capable o
 
 ---
 
-## 📸 Preview
 
-| Assistant Interface        | Semantic Search            | Automation Layer            |
-| -------------------------- | -------------------------- | --------------------------- |
-| ![](local-ai-studio-1.png) | ![](local-ai-studio-2.png) | ![](architecturebanner.png) |
+## 🚀 How to Run
+
+## 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+```
+
+## 2. Create a Virtual Environment
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+## 3. Install Dependencies
+
+Install all required packages from `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Download Model Files
+
+Create the following directory structure:
+
+```text
+models/
+└── 160M/
+```
+
+Place the model files inside the `160M` folder:
+
+```text
+models/
+└── 160M/
+    ├── config.json
+    ├── model.safetensors
+    └── tokenizer.json
+```
+
+> Ensure all required model weights and configuration files are present before starting the application.
+
+## 5. Run the Application
+
+```bash
+python main.py
+```
+
+If your project uses a different entry point, replace `main.py` with the appropriate file.
+
+## Troubleshooting
+
+* Verify that the virtual environment is activated.
+* Ensure all dependencies are installed successfully.
+* Confirm that the `models/160M` directory contains the required model files.
+* Check the terminal output for any missing package or file errors.
 
 ---
 
 ## 🚀 Overview
+
 
 Local AI Studio combines conversational AI with semantic command execution.
 
