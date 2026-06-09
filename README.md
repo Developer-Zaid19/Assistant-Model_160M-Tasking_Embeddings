@@ -77,7 +77,7 @@ models/
 ## 5. Run the Application
 
 ```bash
-python main.py
+python manage.py runserver
 ```
 
 If your project uses a different entry point, replace `main.py` with the appropriate file.
